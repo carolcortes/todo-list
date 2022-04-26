@@ -7,10 +7,11 @@ const addButton = document.getElementById('criar-tarefa');
 function createList() {
   const tarefa = document.createElement('li');
   tarefa.innerText = input.value;
+  tarefa.className = 'tarefa';
   oList.appendChild(tarefa);
   input.value = '';
 }
-addButton.addEventListener('click', createList)
+addButton.addEventListener('click', createList);
 
 window.onload = () => {
 
