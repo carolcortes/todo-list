@@ -1,6 +1,6 @@
 console.log('Olá, mundo!');
 
-// complete item
+// completed item
 function removeCompleted(event) {
   const myEvent = event;
   myEvent.target.classList.remove('completed');
@@ -12,7 +12,7 @@ function completedItem(event) {
   myEvent.target.addEventListener('dblclick', removeCompleted);
 }
 
-// select item
+// selected item
 function selectItem(event) {
   const myEvent = event;
   const tarefaSelecionada = document.getElementsByClassName('tarefa selected');
@@ -36,6 +36,13 @@ function createList() {
   input.value = '';
 }
 addButton.addEventListener('click', createList);
+
+// clear list
+const clearButton = document.getElementById('apaga-tudo');
+function clearList() {
+  oList.textContent = '';
+}
+clearButton.addEventListener('click', clearList);
 
 window.onload = () => {
 };
