@@ -1,13 +1,26 @@
 console.log('Olá, mundo!');
 
-// select item list
+// complete item
+function removeCompleted(event) {
+  const myEvent = event;
+  myEvent.target.classList.remove('completed');
+}
+
+function completedItem(event) {
+  const myEvent = event;
+  myEvent.target.classList.add('completed');
+  myEvent.target.addEventListener('dblclick', removeCompleted);
+}
+
+// select item
 function selectItem(event) {
   const myEvent = event;
-  const tarefaSelecionada = document.getElementsByClassName('tarefa selecionada');
+  const tarefaSelecionada = document.getElementsByClassName('tarefa selected');
   if (tarefaSelecionada.length >= 1) {
-    tarefaSelecionada[0].classList.remove('selecionada');
+    tarefaSelecionada[0].classList.remove('selected');
   }
-  myEvent.target.classList.add('selecionada');
+  myEvent.target.classList.add('selected');
+  myEvent.target.addEventListener('dblclick', completedItem);
 }
 
 // create list
