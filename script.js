@@ -1,15 +1,9 @@
 console.log('Olá, mundo!');
 
-// completed item
-function removeCompleted(event) {
+// completed items
+function doubleClick(event) {
   const myEvent = event;
-  myEvent.target.classList.remove('completed');
-}
-
-function completedItem(event) {
-  const myEvent = event;
-  myEvent.target.classList.add('completed');
-  myEvent.target.addEventListener('dblclick', removeCompleted);
+  myEvent.target.classList.toggle('completed');
 }
 
 // selected item
@@ -20,7 +14,6 @@ function selectItem(event) {
     tarefaSelecionada[0].classList.remove('selected');
   }
   myEvent.target.classList.add('selected');
-  myEvent.target.addEventListener('dblclick', completedItem);
 }
 
 // create list
@@ -33,9 +26,10 @@ function createList() {
   oList.appendChild(tarefa);
   tarefa.className = 'tarefa';
   tarefa.addEventListener('click', selectItem);
+  tarefa.addEventListener('dblclick', doubleClick);
   input.value = '';
 }
-addButton.addEventListener('click', createList);
+addButton.addEventListener('click', createList);  
 
 // clear list
 const clearButton = document.getElementById('apaga-tudo');
@@ -92,5 +86,34 @@ function moveDown() {
 upButton.addEventListener('click', moveUp);
 downButton.addEventListener('click', moveDown);
 
-window.onload = () => {
-};
+const salvar = document.getElementById('salvar-tarefas');
+function saveList() {
+  if (tarefa.length !== 0) {
+    console.log(tarefa.length);
+    const tarefasList = [];
+    for (let index = 0; index < tarefa.length; index += 1) {
+      tarefasList.push({
+        texto: tarefa[index].innerText,
+        classe: tarefa[index].className,
+      });
+    }
+    localStorage.setItem('savedList', JSON.stringify(tarefasList));
+  }
+}
+salvar.addEventListener('click', saveList);
+
+function oldList() {
+  const savedList = JSON.parse(localStorage.getItem('savedList'));
+  if (savedList) {
+    for (let index = 0; index < savedList.length; index += 1) {
+      const tarefaSaved = document.createElement('li');
+      tarefaSaved.innerText = savedList[index].texto;
+      tarefaSaved.className = savedList[index].classe;
+      oList.appendChild(tarefaSaved);
+      tarefaSaved.addEventListener('click', selectItem);
+      tarefaSaved.addEventListener('dblclick', doubleClick);
+      saveList();
+    }
+  }
+}
+oldList();
