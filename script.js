@@ -78,7 +78,11 @@ function moveDown() {
       const change = tarefa[i + 1].innerText;
       tarefa[i + 1].innerText = tarefaSelecionada[0].innerText;
       tarefa[i].innerText = change;
+      tarefa[i + 1].classList.add('selected');
     }
+  }
+  if (tarefaSelecionada.length >= 2) {
+    tarefaSelecionada[0].classList.remove('selected');
   }
 }
 upButton.addEventListener('click', moveUp);
