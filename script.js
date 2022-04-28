@@ -44,5 +44,15 @@ function clearList() {
 }
 clearButton.addEventListener('click', clearList);
 
+// remove completed items
+const removeCompletedItems = document.getElementById('remover-finalizados');
+function clearCompleted() {
+  const completed = document.getElementsByClassName('completed');
+  for (let index = completed.length - 1; index >= 0; index -= 1) {
+    completed[index].remove();
+  }
+}
+removeCompletedItems.addEventListener('click', clearCompleted);
+
 window.onload = () => {
 };
