@@ -13,9 +13,9 @@ function completedItem(event) {
 }
 
 // selected item
+const tarefaSelecionada = document.getElementsByClassName('selected');
 function selectItem(event) {
   const myEvent = event;
-  const tarefaSelecionada = document.getElementsByClassName('tarefa selected');
   if (tarefaSelecionada.length >= 1) {
     tarefaSelecionada[0].classList.remove('selected');
   }
@@ -44,15 +44,20 @@ function clearList() {
 }
 clearButton.addEventListener('click', clearList);
 
-// remove completed items
+// remove items
 const removeCompletedItems = document.getElementById('remover-finalizados');
+const removeSelectedButton = document.getElementById('remover-selecionado');
 function clearCompleted() {
   const completed = document.getElementsByClassName('completed');
   for (let index = completed.length - 1; index >= 0; index -= 1) {
     completed[index].remove();
   }
 }
+function removeSelectedItem() {
+  tarefaSelecionada[0].remove();
+}
 removeCompletedItems.addEventListener('click', clearCompleted);
+removeSelectedButton.addEventListener('click', removeSelectedItem);
 
 window.onload = () => {
 };
