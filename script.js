@@ -59,5 +59,30 @@ function removeSelectedItem() {
 removeCompletedItems.addEventListener('click', clearCompleted);
 removeSelectedButton.addEventListener('click', removeSelectedItem);
 
+// move items
+const upButton = document.getElementById('mover-cima');
+const downButton = document.getElementById('mover-baixo');
+const tarefa = document.getElementsByClassName('tarefa');
+function moveUp() {
+  for (let index = 0; index < tarefa.length; index += 1) {
+    if (tarefaSelecionada[0] !== tarefa[0] && tarefa[index] === tarefaSelecionada[0]) {
+      const change = tarefa[index - 1].innerText;
+      tarefa[index - 1].innerText = tarefaSelecionada[0].innerText;
+      tarefa[index].innerText = change;
+    }
+  }
+}
+function moveDown() {
+  for (let i = 0; i < tarefa.length; i += 1) {
+    if (tarefaSelecionada[0] !== tarefa[tarefa.length - 1] && tarefa[i] === tarefaSelecionada[0]) {
+      const change = tarefa[i + 1].innerText;
+      tarefa[i + 1].innerText = tarefaSelecionada[0].innerText;
+      tarefa[i].innerText = change;
+    }
+  }
+}
+upButton.addEventListener('click', moveUp);
+downButton.addEventListener('click', moveDown);
+
 window.onload = () => {
 };
