@@ -69,7 +69,11 @@ function moveUp() {
       const change = tarefa[index - 1].innerText;
       tarefa[index - 1].innerText = tarefaSelecionada[0].innerText;
       tarefa[index].innerText = change;
+      tarefa[index - 1].classList.add('selected');
     }
+  }
+  if (tarefaSelecionada.length >= 2) {
+    tarefaSelecionada[tarefaSelecionada.length - 1].classList.remove('selected');
   }
 }
 function moveDown() {
