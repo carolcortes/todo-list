@@ -2,6 +2,6 @@ body {
   margin: 45px
 }
 
-.tarefa {
-    background-color: pink;
+.selecionada {
+  background-color: rgb(128, 128, 128);
 }
