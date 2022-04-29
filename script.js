@@ -1,11 +1,5 @@
 console.log('Olá, mundo!');
 
-// completed items
-function doubleClick(event) {
-  const myEvent = event;
-  myEvent.target.classList.toggle('completed');
-}
-
 // selected item
 const tarefaSelecionada = document.getElementsByClassName('selected');
 function selectItem(event) {
@@ -14,6 +8,12 @@ function selectItem(event) {
     tarefaSelecionada[0].classList.remove('selected');
   }
   myEvent.target.classList.add('selected');
+}
+
+// completed items
+function doubleClick(event) {
+  const myEvent = event;
+  myEvent.target.classList.toggle('completed');
 }
 
 // create list
@@ -29,7 +29,7 @@ function createList() {
   tarefa.addEventListener('dblclick', doubleClick);
   input.value = '';
 }
-addButton.addEventListener('click', createList);  
+addButton.addEventListener('click', createList);
 
 // clear list
 const clearButton = document.getElementById('apaga-tudo');
@@ -86,6 +86,7 @@ function moveDown() {
 upButton.addEventListener('click', moveUp);
 downButton.addEventListener('click', moveDown);
 
+// save list
 const salvar = document.getElementById('salvar-tarefas');
 function saveList() {
   if (tarefa.length !== 0) {
