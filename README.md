@@ -5,7 +5,8 @@
 
 ## Habilidades:
  - Desenvolvimento de uma página para criação de uma lista de tarefas usando ``HTML``, ``CSS`` e ``JavaScript``.
- 
+
+![exemplo de uma todo list](./todo-list-example.gif) 
  
  ## Funcionalidade:
   - Ao utilizar a página, o usuário poderá realizar a criação de uma lista de tarefas;

@@ -21,13 +21,15 @@ const input = document.getElementById('texto-tarefa');
 const oList = document.getElementById('lista-tarefas');
 const addButton = document.getElementById('criar-tarefa');
 function createList() {
-  const tarefa = document.createElement('li');
-  tarefa.innerText = input.value;
-  oList.appendChild(tarefa);
-  tarefa.className = 'tarefa';
-  tarefa.addEventListener('click', selectItem);
-  tarefa.addEventListener('dblclick', doubleClick);
-  input.value = '';
+  if (input.value) {
+    const tarefa = document.createElement('li');
+    tarefa.innerText = input.value;
+    oList.appendChild(tarefa);
+    tarefa.className = 'tarefa';
+    tarefa.addEventListener('click', selectItem);
+    tarefa.addEventListener('dblclick', doubleClick);
+    input.value = '';
+  }
 }
 addButton.addEventListener('click', createList);
 
